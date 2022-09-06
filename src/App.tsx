@@ -14,36 +14,14 @@ function App() {
 			<main>
 				<h1> Våra böcker </h1>
 				<div className="book-grid">
-					<div className="card">
-						<h3> Bokens titel </h3>
-						<img alt="bild" />
-						<p> Författare </p>
-						<button> Låna </button>
-					</div>
-					<div className="card">
-						<h3> Bokens titel </h3>
-						<img alt="bild" />
-						<p> Författare </p>
-						<button className="return"> Återlämna </button>
-					</div>
-					<div className="card">
-						<h3> Bokens titel </h3>
-						<img alt="bild" />
-						<p> Författare </p>
-						<button> Låna </button>
-					</div>
-					<div className="card">
-						<h3> Bokens titel </h3>
-						<img alt="bild" />
-						<p> Författare </p>
-						<button> Låna </button>
-					</div>
-					<div className="card">
-						<h3> Bokens titel </h3>
-						<img alt="bild" />
-						<p> Författare </p>
-						<button> Låna </button>
-					</div>
+					{books.map(book => (
+						<div className="card" key={book.bookId}>
+							<h3> {book.title} </h3>
+							<img alt="bild" src={book.imageUrl} />
+							<p> Författare: {book.author} </p>
+							<button className=""> Låna </button>
+						</div>
+					))}
 				</div>
 			</main>
 			<footer>
