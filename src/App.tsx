@@ -30,15 +30,16 @@ function App() {
 				<h1> Våra böcker </h1>
 				<div className="book-grid">
 					{books.map(book => (
-						<div className="card" key={book.bookId}>
+						<section className="card" key={book.bookId}>
 							<h3> {book.title} </h3>
 							<img alt="bild" src={book.imageUrl} />
 							<p> Författare: {book.author} </p>
+							<div className="separator"></div>
 							{borrowList.find(borrow => borrow.bookId === book.bookId)
 								? <button className="return" onClick={() => handleReturnClick(book.bookId)}> Återlämna </button>
 								: <button onClick={() => handleBorrowClick(book.bookId)}> Låna </button>
 							}
-						</div>
+						</section>
 					))}
 				</div>
 			</main>

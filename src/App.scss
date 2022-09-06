@@ -54,6 +54,8 @@ h3 {
 	border-radius: 1em;
 	padding: 0.5em 1em;
 	margin: 0.4em;
+	display: flex;
+	flex-direction: column;
 }
 
 .card button {
@@ -91,6 +93,10 @@ p {
 	height: 8em;
 	// border: 1px solid gray;
 	background: lightgray;
+}
+
+.card .separator {
+	flex-grow: 1;
 }
 
 .book-grid {
