@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import './App.scss'
+import { Book } from './models/data'
+import jsonData from './data/json.json'
 
 function App() {
-	const [count, setCount] = useState(0)
+	const [books, setBooks] = useState<Book[]>(jsonData.books)
 
 	return (
 		<div id="app">
