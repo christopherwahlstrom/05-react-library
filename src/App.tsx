@@ -1,10 +1,25 @@
 import { useState } from 'react'
 import './App.scss'
-import { Book } from './models/data'
+import { Book, Borrow } from './models/data'
 import jsonData from './data/json.json'
 
 function App() {
 	const [books, setBooks] = useState<Book[]>(jsonData.books)
+	const [borrowList, setBorrowList] = useState<Borrow[]>([])
+
+	const handleBorrowClick = (bookId: number) => {
+		let borrow: Borrow = {
+			borrowId: 1,  // TODO: fixa detta sen!
+			bookId: bookId
+		}
+		let newBorrowList = [ ...borrowList, borrow ]
+		setBorrowList(newBorrowList)
+		// Tips: immer.js
+	}
+	const handleReturnClick = (bookId: number) => {
+		let newBorrowList = borrowList.filter(borrow => borrow.bookId !== bookId)
+		setBorrowList(newBorrowList)
+	}
 
 	return (
 		<div id="app">
@@ -19,7 +34,10 @@ function App() {
 							<h3> {book.title} </h3>
 							<img alt="bild" src={book.imageUrl} />
 							<p> Författare: {book.author} </p>
-							<button className=""> Låna </button>
+							{borrowList.find(borrow => borrow.bookId === book.bookId)
+								? <button className="return" onClick={() => handleReturnClick(book.bookId)}> Återlämna </button>
+								: <button onClick={() => handleBorrowClick(book.bookId)}> Låna </button>
+							}
 						</div>
 					))}
 				</div>
