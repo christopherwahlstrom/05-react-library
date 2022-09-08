@@ -1,6 +1,7 @@
 import { Book, Borrow } from '../../models/data'
 import BookCard from './BookCard'
 import { useSelector } from 'react-redux'
+import { RootState } from '../../store'
 
 interface Props {
 	// books: Book[];  <- har flyttat till Redux state
@@ -11,7 +12,7 @@ interface Props {
 
 // Obs! Är också ok att skriva: (props: Props)
 const BookGrid = ({ borrowList, handleReturnClick, handleBorrowClick }: Props) => {
-	const books = useSelector(state => state.books)
+	const books = useSelector((state: RootState) => state.books)
 	
 	return (
 		<div className="book-grid">
