@@ -5,7 +5,7 @@ import jsonData from '../data/json.json'
 
 // ACTIONS
 // Låna och återlämna
-const doBorrow = createAction('Borrow a book')
+const doBorrow = createAction<number>('Borrow a book')
 const doReturn = createAction<number>('Return a book')
 
 const actions = { doBorrow, doReturn }

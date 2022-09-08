@@ -1,4 +1,4 @@
-import { Book, Borrow } from '../../models/data'
+import { Book } from '../../models/data'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../store'
 import { actions } from '../../features/borrowListReducer'
@@ -15,6 +15,7 @@ const BookCard = ({ book }: Props) => {
 	const dispatch = useDispatch()
 
 	const borrowList = useSelector((state: RootState) => state.borrowList)
+	// True om det finns ett lån för aktuell bok, false annars
 	const isBorrowed: boolean = borrowList.find(borrow => borrow.bookId === book.bookId) !== undefined
 
 	type BookIdFunc = (bookId: number) => void
@@ -22,7 +23,7 @@ const BookCard = ({ book }: Props) => {
 		dispatch(actions.doReturn(bookId))
 	}
 	const handleBorrowClick: BookIdFunc = bookId => {
-
+		dispatch(actions.doBorrow(bookId))
 	}
 
 	return (
