@@ -5,10 +5,11 @@ import { Book, Borrow } from './models/data'
 import jsonData from './data/json.json'
 
 function App() {
-	// books har flyttat till Redux state
+	// books och borrowList har flyttat till Redux state
 	// const [books, setBooks] = useState<Book[]>(jsonData.books)
-	const [borrowList, setBorrowList] = useState<Borrow[]>([])
+	// const [borrowList, setBorrowList] = useState<Borrow[]>([])
 
+	/*  Detta händer i BookCard i stället
 	const handleBorrowClick = (bookId: number) => {
 		let borrow: Borrow = {
 			borrowId: 1,  // TODO: fixa detta sen!
@@ -21,7 +22,7 @@ function App() {
 	const handleReturnClick = (bookId: number) => {
 		let newBorrowList = borrowList.filter(borrow => borrow.bookId !== bookId)
 		setBorrowList(newBorrowList)
-	}
+	}*/
 
 	return (
 		<div id="app">
@@ -30,7 +31,7 @@ function App() {
 			</header>
 			<main>
 				<h1> Våra böcker </h1>
-				<BookGrid borrowList={borrowList} handleReturnClick={handleReturnClick} handleBorrowClick={handleBorrowClick} />
+				<BookGrid />
 			</main>
 			<footer>
 				Kontakta oss
