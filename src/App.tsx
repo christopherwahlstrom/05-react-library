@@ -5,7 +5,8 @@ import { Book, Borrow } from './models/data'
 import jsonData from './data/json.json'
 
 function App() {
-	const [books, setBooks] = useState<Book[]>(jsonData.books)
+	// books har flyttat till Redux state
+	// const [books, setBooks] = useState<Book[]>(jsonData.books)
 	const [borrowList, setBorrowList] = useState<Borrow[]>([])
 
 	const handleBorrowClick = (bookId: number) => {
@@ -29,7 +30,7 @@ function App() {
 			</header>
 			<main>
 				<h1> Våra böcker </h1>
-				<BookGrid books={books} borrowList={borrowList} handleReturnClick={handleReturnClick} handleBorrowClick={handleBorrowClick} />
+				<BookGrid borrowList={borrowList} handleReturnClick={handleReturnClick} handleBorrowClick={handleBorrowClick} />
 			</main>
 			<footer>
 				Kontakta oss
